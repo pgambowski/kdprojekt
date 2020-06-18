@@ -1,0 +1,5 @@
+venv
+__pycache__
+.idea
+.vscode
+app\__pycache__

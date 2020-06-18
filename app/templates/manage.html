@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand"><img src="{{ url_for('static', filename='img/kdprojekt_logo.png') }}" width="120" loading="lazy"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sortuj umowy
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Nazwisko A-Z</a>
+                        <a class="dropdown-item" href="#">Data dodania</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Eksportuj dane</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Wyloguj</a>
+                 </li>
+            </ul>
+      </div>
+</nav>
+
+<div class="container">
+    <table class="table table-striped mt-5">
+        <tbody>
+            <tr>
+                <th scope="row" class="text-center"><h5>Numer umowy</h5></th>
+                <th scope="row" class="text-center"><h5>Data</h5></th>
+                <th scope="row" class="text-center"><h5>Imie i nazwisko</h5></th>
+                <th scope="row" class="text-center"><h5>Numer telefonu</h5></th>
+                <th scope="row" class="text-center"><h5>Akcje</h5></th>
+            </tr>
+          <tr>
+            <td class="text-center">1</td>
+            <td class="text-center">10.05.2020</td>
+            <td class="text-center">Adam Nowak</td>
+            <td class="text-center">(+48)401 825 635</td>
+            <td class="text-center"><button type="button" class="btn btn-primary">Pobierz</button> <button type="button" class="btn btn-danger">Usuń</button></td>
+          </tr>
+          <tr>
+            <td class="text-center">2</td>
+            <td class="text-center">10.05.2020</td>
+            <td class="text-center">Aniela Sobczak</td>
+            <td class="text-center">(+48)725 213 456</td>
+            <td class="text-center"><button type="button" class="btn btn-primary">Pobierz</button> <button type="button" class="btn btn-danger">Usuń</button></td>
+          </tr>
+          <tr>
+            <td class="text-center">3</td>
+            <td class="text-center">15.05.2020</td>
+            <td class="text-center">Jakób Wiśniewski</td>
+            <td class="text-center">(+48)379 142 936</td>
+            <td class="text-center"><button type="button" class="btn btn-primary">Pobierz</button> <button type="button" class="btn btn-danger">Usuń</button></td>
+          </tr>
+          <tr>
+            <td class="text-center">4</td>
+            <td class="text-center">17.05.2020</td>
+            <td class="text-center">Bogumiła Szewczyk</td>
+            <td class="text-center">(+48)956 537 555</td>
+            <td class="text-center"><button type="button" class="btn btn-primary">Pobierz</button> <button type="button" class="btn btn-danger">Usuń</button></td>
+          </tr>
+    </table>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{% endblock %}

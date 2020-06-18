@@ -1,0 +1,542 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<header class="header">
+  <h1 class="header__title">Formularz rekrutacyjny</h1>
+  {% if company %}
+  <img src="{{ url_for('static', filename='img/kdprojekt_logo.png') }}" width="170" loading="lazy">
+  {% else %}
+  <img src="{{ url_for('static', filename='img/urcup_logo.png') }}" width="170" loading="lazy">
+  {% endif %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</header>
+
+<div class="content">
+  <div class="container overflow-hidden">
+    <div class="multisteps-form">
+      <div class="row">
+        <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
+          <div class="multisteps-form__progress">
+            <button class="multisteps-form__progress-btn js-active" type="button">Dane osobowe</button>
+            <button class="multisteps-form__progress-btn" type="button">Adres zamieszkania</button>
+            <button class="multisteps-form__progress-btn" type="button">Powszechne ubezpieczenie zdrowotne</button>
+            <button class="multisteps-form__progress-btn" type="button">Powszechne ubezpieczenie społeczne</button>
+            <button class="multisteps-form__progress-btn" type="button">Dobrowolne ubezpieczenia</button>
+            <button class="multisteps-form__progress-btn" type="button">Zgody</button>
+          </div>
+        </div>
+      </div>
+
+      <!--form panels-->
+      <div class="row">
+        <div class="col-12 col-lg-8 m-auto">
+          <form class="multisteps-form__form" action="/submit" method="POST" id="main-form">
+            {% if company %}
+            <input class="hidden" type='radio' name='company' value='kdprojekt'checked />
+            {% else %}
+            <input class="hidden" type='radio' name='company' value='urcup' checked />
+            {% endif %}
+            <!--single form panel-->
+            <div class="multisteps-form__panel js-active shadow p-3 mb-5 rounded bg-white" data-animation="scaleIn">
+              <h3>Dane osobowe</h3>
+              <div class="multisteps-form__content">
+                <div class="form-row mt-4">
+                  <div class="col">
+                    <label>Nazwisko</label>
+                      <input class="multisteps-form__input form-control" name="surname" id="surname" type="text" placeholder="Nazwisko"/>
+                  </div>
+                </div>
+                <div class="form-row mt-4">
+                    <label>Imiona</label>
+                </div>
+                <div class="form-row">
+                  <div class="col-12 col-sm-6">
+                    <input class="multisteps-form__input form-control" name="name" id="name" type="text" placeholder="Imię"/>
+                  </div>
+                  <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                    <input class="multisteps-form__input form-control" name="secondName" id="secondName" type="text" placeholder="Drugie imię"/>
+                    <small class="form-text text-muted">
+                      Pozostaw puste jeśli nie dotyczy.
+                    </small>
+                  </div>
+                </div>
+                <div class="form-row">
+                    <label>Imiona rodziców</label>
+                </div>
+                <div class="form-row">
+                  <div class="col-12 col-sm-6">
+                    <input class="multisteps-form__input form-control" name="fathersName" id="fathersName" type="text" placeholder="Imię ojca"/>
+                  </div>
+                  <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                    <input class="multisteps-form__input form-control" name="mothersName" id="mothersName" type="text" placeholder="Imię matki"/>
+                  </div>
+                </div>
+                <div class="form-row mt-4">
+                  <div class="col-12 col-sm-6">
+                    <label>Data urodzenia</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend"><i class="far fa-calendar-alt input-group-text"></i></div>
+                      <input class="multisteps-form__input form-control" name="birthDate" id="birthDate" type="text" placeholder="Data urodzenia"/>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                    <label>Miejsce urodzenia</label>
+                    <input class="multisteps-form__input form-control" name="birthPlace" id="birthPlace" type="text" placeholder="Miejsce urodzenia"/>
+                  </div>
+                </div>
+                <div class="form-row mt-4">
+                  <div class="col-12 col-sm-6">
+                    <label>
+                      Nazwisko rodowe
+                    </label>
+                    <input class="multisteps-form__input form-control" name="familyName" id="familyName" type="text" placeholder="Nazwisko rodowe"/>
+                    <small class="form-text text-muted">
+                      Pozostaw puste jeśli nie dotyczy.
+                    </small>
+                  </div>
+                  
+                  <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                    <label>
+                      Obywatelstwo
+                    </label>
+                    <input class="multisteps-form__input form-control" name="citizenship" id="citizenship" type="text" placeholder="Obywatelstwo"/>
+                  </div>
+                </div>
+                <div class="form-row mt-4">
+                  <div class="col-12 col-sm-6">
+                    <label>
+                      PESEL
+                    </label>
+                    <input class="multisteps-form__input form-control" name="pesel" id="pesel" type="text" placeholder="PESEL"/>
+                  </div>
+                  <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                    <label>
+                      NIP
+                    </label>
+                    <input class="multisteps-form__input form-control" name="nip" id="nip" type="text" placeholder="NIP"/>
+                    <small class="form-text text-muted">
+                      Pozostaw puste jeśli nie dotyczy.
+                    </small>
+                  </div>
+                </div>
+                <div class="form-row">  
+                  <label>
+                    Dane kontaktowe
+                  </label>
+                </div>
+                <div class="form-row">
+                  <div class="col-12 col-sm-6">
+                    <input class="multisteps-form__input form-control" name="phoneNumber" id="phoneNumber" type="tel" placeholder="Numer telefonu"/>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <input class="multisteps-form__input form-control" name="email" id="email" type="email" placeholder="Adres email"/>
+                  </div>
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col">
+                    <label>
+                      Nr karty stałego pobytu
+                    </label>
+                    <input class="multisteps-form__input form-control" name="stayNumber" id="stayNumber" placeholder="Nr karty stałego pobytu"/>
+                    <small class="form-text text-muted">
+                      Tylko dla obcokrajowców
+                    </small>
+                  </div>
+                </div>
+                <div class="button-row d-flex mt-4">
+                  <button class="btn btn-primary ml-auto js-btn js-next" type="button">Dalej</button>
+                </div>
+              </div>
+            </div>
+
+            <!--single form panel-->
+            <div class="multisteps-form__panel shadow p-3 mb-5 rounded bg-white" data-animation="scaleIn">
+              <h3>Adres zamieszkania</h3>
+              <div class="form-row mt-4">
+                <div class="col-12 col-sm-6">
+                  <label>
+                    Województwo
+                  </label>
+                  <select class="multisteps-form__input form-control" name="voivodship" id="voivodship" value="">
+                    <option>Dolnośląskie</option>
+                    <option>Kujawsko-Pomorskie</option>
+                    <option>Lubelskie</option>
+                    <option>Lubuskie</option>
+                    <option>Łódzkie</option>
+                    <option>Małopolskie</option>
+                    <option>Mazowieckie</option>
+                    <option>Opolskie</option>
+                    <option>Podkarpackie</option>
+                    <option>Podlaskie</option>
+                    <option selected="selected">Pomorskie</option>
+                    <option>Śląskie</option>
+                    <option>Świętokrzyskie</option>
+                    <option>Warmińsko-Mazurskie</option>
+                    <option>Wielkopolskie</option>
+                    <option>Zachodniopomorski</option>
+                  </select>
+                </div>
+                <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                  <label>
+                    Powiat
+                  </label>
+                  <input class="multisteps-form__input form-control" name="powiat" id="powiat" type="text" placeholder="Powiat"/>
+                </div>
+              </div>
+              <div class="form-row mt-4">
+                <div class="col-12 col-sm-6">
+                  <label>
+                    Gmina
+                  </label>
+                  <input class="multisteps-form__input form-control" name="gmina" id="gmina" type="text" placeholder="Gmina"/>
+                </div>
+                <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                  <label>
+                    Ulica
+                  </label>
+                  <input class="multisteps-form__input form-control" name="street" id="street" type="text" placeholder="Ulica"/>
+                </div>
+              </div>
+              <div class="form-row mt-4">
+                <div class="col-12 col-sm-6">
+                  <label>
+                    Numer domu
+                  </label>
+                  <input class="multisteps-form__input form-control" name="houseNumber" id="houseNumber" type="text" placeholder="Numer domu"/>
+                </div>
+                <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                  <label>
+                    Numer mieszkania
+                  </label>
+                  <input class="multisteps-form__input form-control" name="flatNumber" id="flatNumber" type="text" placeholder="Numer mieszkania"/>
+                  <small class="form-text text-muted">
+                    Pozostaw puste jeśli nie dotyczy.
+                  </small>
+                </div>
+              </div>
+              <div class="form-row mt-2">
+                <div class="col-12 col-sm-6">
+                  <label>
+                    Miejscowość
+                  </label>
+                  <input class="multisteps-form__input form-control" name="city" id="city" type="text" placeholder="Miejscowość"/>
+                </div>
+                <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                  <label>
+                    Kod pocztowy
+                  </label>
+                  <input class="multisteps-form__input form-control" name="postCode" id="postCode" type="text" placeholder="Kod pocztowy"/>
+                </div>
+              </div>
+              <div class="form-row mt-4">
+                <div class="col">
+                  <label>
+                    Poczta
+                  </label>
+                  <input class="multisteps-form__input form-control" name="post" id="post" type="text" placeholder="Poczta"/>
+                </div>
+              </div>
+              <hr>
+              <div class="form-row mt-4">
+                <div class="col">
+                  <label>
+                    Informacje o urzędzie skarbowym
+                    <a role="button" 
+                      data-toggle="popover" 
+                      data-html="true"
+                      data-title="Jaki jest mój urząd skarbowy?"
+                      data-content="Potrzebujemy danych o urzędzie właściwym do przekazania rocznej informacji o dochodach i pobranych zaliczkach na podatek dochodowy.Jeśli nie znasz adresu swojego urzędu, możesz go znajeźć tutaj: <a href='http://mf-arch.mf.gov.pl/administracja-podatkowa/administracja-podatkowa/struktura-organizacyjna/izby-i-urzedy-skarbowe?p_p_id=mfportalou_WAR_mfportalouportlet_INSTANCE_l6nJ&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=2&_mfportalou_WAR_mfportalouportlet_INSTANCE_l6nJ_javax.portlet.action=SearchPortlet' target='blank'>link</a>">
+                        <i class="far fa-question-circle help-button" ></i>
+                    </a>
+                  </label>
+                  <input class="multisteps-form__input form-control" name="zusName" id="zusName" type="text" placeholder="Nazwa jednostki"/>
+                </div>
+              </div>
+              <div class="form-row mt-4">
+                <div class="col">
+                  <input class="multisteps-form__input form-control" name="zusAddress" id="zusAddress" type="text" placeholder="Pełny adres urzędu"/>
+                </div>
+              </div>
+              <div class="button-row d-flex mt-4">
+                <button class="btn btn-primary js-btn js-prev" type="button">Powrót</button>
+                <button class="btn btn-primary ml-auto js-btn js-next" type="button">Dalej</button>
+              </div>
+            </div>
+
+            <!--single form panel-->
+            <div class="multisteps-form__panel shadow p-3 mb-5 rounded bg-white" data-animation="scaleIn">
+              <h3>Powszechne ubezpieczenie zdrowotne</h3>
+              <div class="form-row mt-4">
+                <div class="col">
+                  <label>Oddział NFZ</label>
+                  <select class="multisteps-form__input form-control" name="nfz" id="nfz">
+                    <option>Dolnośląski Oddział Wojewódzki NFZ </option>
+                    <option>Kujawsko-Pomorski Oddział Wojewódzki NFZ </option>
+                    <option>Lubelski Oddział Wojewódzki NFZ </option>
+                    <option>Lubuski Oddział Wojewódzki NFZ </option>
+                    <option>Łódzki Oddział Wojewódzki NFZ </option>
+                    <option>Małopolski Oddział Wojewódzki NFZ</option>
+                    <option>Mazowiecki Oddział Wojewódzki NFZ </option>
+                    <option>Opolski Oddział Wojewódzki NFZ</option>
+                    <option>Podkarpacki Oddział Wojewódzki NFZ</option>
+                    <option>Podlaski Oddział Wojewódzki NFZ</option>
+                    <option selected="selected">Pomorski Oddział Wojewódzki NFZ </option>
+                    <option>Śląski Oddział Wojewódzki NFZ </option>
+                    <option>Świętokrzyski Oddział Wojewódzki NFZ </option>
+                    <option>Warmińsko-Mazurski Oddział Wojewódzki NFZ </option>
+                    <option>Wielkopolski Oddział Wojewódzki NFZ </option>
+                    <option>Zachodniopomorski Oddział Wojewódzki NFZ </option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col">
+                  <label for='pensioner'>Czy posiadasz status emeryta lub rencisty?</label>
+                  <div class='check-container'>
+                    <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input" type='radio' name='pensioner' value='emeryt'/></div>Emeryta</label>
+                    <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input" type='radio' name='pensioner' value='rencista'/></div>Rencisty</label>
+                    <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input" type='radio' name='pensioner' value='false'/></div>Nie</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-4">
+                <div class="col">
+                  <label for='disabled'>Czy posiadasz orzeczenie o stopniu niepełnosprawności?</label>
+                  <div class='check-container'>
+                    <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input primary-field" id="disabled-show" type='radio' name='disabled' value='true'/></div>Tak</label>
+                    <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input primary-field" id="disabled-hide" type='radio' name='disabled' value='false'/></div>Nie</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row hidden" id="disabled-nested">
+                <div class="col">
+                  <label for="disabledLevel">Stopień niepełnosprawności</label>
+                  <select class="multisteps-form__input form-control clear" name="disabledLevel" id="disabled-nested-field">
+                    <option>Lekki</option>
+                    <option>Umiarkowany</option>
+                    <option>Znaczny</option>
+                  </select>
+                </div>
+              </div>
+              <div class="button-row d-flex mt-4">
+                <button class="btn btn-primary js-btn js-prev" type="button">Powrót</button>
+                <button class="btn btn-primary ml-auto js-btn js-next" type="button">Dalej</button>
+              </div>
+            </div>
+
+            <!--single form panel-->
+            <div class="multisteps-form__panel shadow p-3 mb-5 rounded bg-white" data-animation="scaleIn">
+              <h3>Powszechne ubezpieczenie społeczne</h3>
+              <div class="form-row mt-4">
+                <div class="col">
+                  <label for='insurance'>Czy jesteś objęty/a ubezpieczeniem emerytalnym i rentowym?</label>
+                  <div class='check-container'>
+                    <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input primary-field" id="insurance-show" type='radio' name='insurance' value='true'/></div>Tak</label>
+                    <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input primary-field" id="insurance-hide" type='radio' name='insurance' value='false'/></div>Nie</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group hidden nested" id="insurance-nested">
+                <div class="check-container">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input check-nest" type="checkbox" name="insuranceReason" id="reason1" value="reason1">Stosunku pracy
+                    </label>
+                  </div>
+                  <div class="mb-2 hidden" id="reason1-nested">
+                    <input class="multisteps-form__input form-control" name="workplace" type="text" placeholder="Nazwa zakładu pracy"/>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" name="insuranceReason" value="reason2">Członkostwa w spółdzielni produkcyjnej lub kółek rolniczych
+                    </label>
+                  </div>
+                  <div class="form-check">                 
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" name="insuranceReason" value="reason3">Stosunku służby w WP, Policji, UOP, SG, PSW, SW, SC
+                    </label>
+                  </div>
+                  <div class="form-check">                 
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" name="insuranceReason" value="reason4">Wykonywania umowy zlecenia na rzecz innego zleceniodawcy
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" name="insuranceReason" value="reason5">Prowadzenia pozarolniczej działalności gospodarczej na własne nazwisko
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" name="insuranceReason" value="reason6">Wykonywania pracy nakładczej
+                    </label>
+                  </div>
+                  <div class="form-group mb-0">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input check-nest" type="checkbox" name="insuranceReason" id="reason7" value="reason7">Z innego tytułu
+                      </label>
+                    </div>
+                    <div class="form-row hidden" id="reason7-nested">
+                    <input class="multisteps-form__input form-control" name="otherReason" type="text" placeholder="Inny tytuł"/>
+                    </div>
+                  </div>
+                </div>  
+
+                <div class="row mt-2">
+                  <div class="col">
+                    Równocześnie oświadczam, iż podstawa wymiaru składek na ubezpieczenie społeczne emerytalne i rentowe
+                    z określonego przeze mnie tytułu w przeliczeniu na okres miesiąca jest
+                    <select class="multisteps-form__input clear" name="insuranceStatement">
+                      <option>niższa</option>
+                      <option>równa</option>
+                      <option>wyższa</option>
+                    </select>
+                    od kwoty wynagrodzenia minimalnego.
+                  </div>
+                </div>
+              </div>        
+              <div class="row mt-4">
+                <div class="col">
+                  <label for='student'>Czy jesteś uczniem szkoły ponadpodstawowej lub studentem i nie ukończyłeś 26. roku życia?</label>
+                  <div class='check-container'>
+                    <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input primary-field" id="student-show" type='radio' name='student' value='true'/></div>Tak</label>
+                    <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input primary-field" id="student-hide" type='radio' name='student' value='false'/></div>Nie</label>
+                  </div>
+                </div>
+              </div>             
+              <div class="form-group hidden" id="student-nested">
+                <div class="form-row">
+                  <div class="col-12 col-sm-6">
+                    <label>
+                      Nazwa szkoły
+                    </label>
+                    <input class="multisteps-form__input form-control" name="schoolName" type="text" placeholder="Nazwa szkoły"/>
+                  </div>
+                  <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                    <label>
+                      Numer legitymacji
+                    </label>
+                    <input class="multisteps-form__input form-control" name="studentID" type="text" placeholder="Numer legitymacji"/>
+                  </div>
+                </div>
+              </div>
+              <div class="button-row d-flex mt-4">
+                <button class="btn btn-primary js-btn js-prev" type="button">Powrót</button>
+                <button class="btn btn-primary ml-auto js-btn js-next" type="button">Dalej</button>
+              </div>
+            </div>
+
+            <!--single form panel-->
+            <div class="multisteps-form__panel shadow p-3 mb-5 rounded bg-white" data-animation="scaleIn">
+              <h3>Dobrowolne ubezpieczenie</h3>
+
+              <div class="row mt-4">
+                <div class="col">
+                  
+                  <div class='check-container'>
+                    <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input primary-field" id="optionalInsurance-hide" type='radio' name='optionalInsurance' value='false' checked/></div>Nie wnoszę</label>
+                    <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input primary-field" id="optionalInsurance-show" type='radio' name='optionalInsurance' value='true'/></div>Wnoszę</label>
+                    <label class="form-label" for='optionalInsurance'>o objęcie mnie dobrowolnym ubezpieczeniem.</label>
+                    <small class="form-text text-muted">
+                      Objęcie dobrowolnym ubezpieczeniem spowoduje potrącenie dodatkowych składek.
+                    </small>
+                  </div>
+                </div>
+              </div>  
+
+              <div class="form-group check-container hidden mt-2 ml-2" id="optionalInsurance-nested">
+                <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input" type='radio' name='optionalInsuranceType' value='social'/></div>Dodatkowe ubezpieczenie emerytalne i rentowe</label>
+                <label class="form-label"><div class="form-check form-check-inline"><input class="multisteps-form__input" type='radio' name='optionalInsuranceType' value='health'/></div>Dodatkowe ubezpieczenie chorobowe</label>
+                <small class="form-text text-muted">
+                  Objęcie doobjęcie dobrowolnym ub. społecznym wyklucza objęcie dobrowolnym ub. chorobowym
+                </small>
+              </div>
+
+              <div class="button-row d-flex mt-4">
+                <button class="btn btn-primary js-btn js-prev" type="button">Powrót</button>
+                <button class="btn btn-primary ml-auto js-btn js-next" type="button">Dalej</button>
+              </div>
+            </div>
+
+            <!--single form panel-->
+            <div class="multisteps-form__panel shadow p-3 mb-5 rounded bg-white" data-animation="scaleIn">
+              <h3>Zgody</h3>
+              <div class="row mt-4">
+                <div class="col">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input check-nest" name="bankTransferConsent" type="checkbox" id="bankTransfer" value="true">Wyrażam zgodę na przekazywanie mojego wynagrodzenia na konto osobiste.
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group hidden"  id="bankTransfer-nested">
+                <div class="form-row mt-2">
+                  <div class="col-12 col-sm-6">
+                    <input class="multisteps-form__input form-control mb-2" name="bankName" id="bankName" type="text" placeholder="Nazwa banku"/>
+                  </div>
+                  <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                    <input class="multisteps-form__input form-control" name="accountNumber" id="accountNumber" type="text" placeholder="Numer konta bankowego"/>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" name="pitMailConsent" type="checkbox" id="PIT" value="true">Wyrażam zgodę na przekazanie PIT-11 w wersji elektronicznej na adres e-mail
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col">
+                  <div class="form-check">
+                    <div class="check-container">
+                      <label class="form-check-label">
+                        <input class="form-check-input" name="statement" type="checkbox" value="true">
+                        Oświadczam, iż wszystkie informacje są zgodne ze stanem faktycznym i prawnym, a odpowiedzialność karna za podanie
+                        informacji niezgodnych z prawdą lub ich zatajenie jest mi znana. Zobowiązuję się do niezwłocznego poinformowania
+                        Zleceniodawcy o wszelkich zmianach dotyczących treści niniejszego oświadczenia oraz przejmuję odpowiedzialność z tytułu
+                        niedotrzymania powyższego zobowiązania. Upoważniam Zleceniodawcę do dokonania w moim imieniu zgłoszenia do
+                        ubezpieczenia zdrowotnego i/lub społecznego, o ile wykonywanie przeze mnie umowy zlecenia podlegać będzie tym
+                        ubezpieczeniom zgodnie z obowiązującymi przepisami.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="button-row d-flex mt-4">
+                <button class="btn btn-primary js-btn js-prev" type="button" title="Prev">Powrót</button>
+                <button class="btn btn-success ml-auto js-btn js-next" type="button">Wyślij formularz</button>
+              </div>
+            </div>
+
+          </form>
+          <div class="row">
+            <div class="col">
+              <p id="clause">
+                Wypełnienie formularza oznacza zgodę na przetwarzanie przez firmę KDprojekt zawartych w nim danych osobowych w celach rekrutacyjnych
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
+<script  src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script  src="{{ url_for('static', filename='js/validation-extend.js') }}"></script>
+<script  src="{{ url_for('static', filename='js/jquery.mask.min.js') }}"></script>
+{% endblock %}
