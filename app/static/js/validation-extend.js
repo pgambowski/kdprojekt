@@ -50,7 +50,7 @@ $.validator.addMethod("exactlength", function(value, element, param) {
    }, $.validator.format("Proszę wpisać {0} znaków."));
 
 $.validator.addMethod("phoneRegex", function(value, element) {
-    return this.optional(element) || /^\(\+48\)(\ (\d){3}){3}$/i.test(value);
+    return this.optional(element) || /^(\(\d){3}){3}$/i.test(value);
   }, "Proszę podać poprawny numer telefonu.");
 
 

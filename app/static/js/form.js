@@ -151,7 +151,8 @@ $('.js-btn').click(function(event) {
         },
         phoneNumber: {
           required: true,
-          phoneRegex: true
+          phoneRegex: true,
+          exactlength: 11
         },
         email: {
           required: true,
@@ -385,7 +386,7 @@ $(document).ready(function(){
   
   $('#pesel').mask('00000000000');
   $('#nip').mask('0000000000');
-  $('#phoneNumber').mask('(+48) 000 000 000');
+  $('#phoneNumber').mask('000 000 000');
   $('#postCode').mask('00-000');
   $('#accountNumber').mask('00 0000 0000 0000 0000 0000 0000');
 });
