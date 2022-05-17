@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <p><strong>Oświadczenie śŚ Zleceniobiorcy</strong></p>
+        <p><br></p>
+        <p>Dane osobowe</p>
+        <p>Nazwisko: <b>{{ json_data.surname }}</b>&emsp;&emsp;Imiona: 1: <b>{{ json_data.name }}</b> 2: <b>{{ json_data.secondName }}</b></p>
+        <p>Imiona rodziców: <b>{{ json_data.fathersName }}</b>, <b>{{ json_data.mothersName }}</b></p>
+        <p>Data urodzenia: <b>{{ json_data.birthday }}</b>&emsp;&emsp;Miejsce urodzenia: <b>{{ json_data.birthPlace }}</b></p>
+        <p>Nazwisko rodowe: <b>{{ json_data.familyName }}</b>&emsp;&emsp;Obywatelstwo: <b>{{ json_data.citizenship }}</b></p>
+        <p>PESEL ....................................................................................... NIP&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;. Telefon: .......................................................</p>
+        <p>Nr karty stałego pobytu (dla obcokrajowc&oacute;w) ....................................................................................................................................................................</p>
+        <p>Adres zamieszkania</p>
+        <p>Wojew&oacute;dztwo .................................................................... Powiat ................................................................. Gmina ................................................................</p>
+        <p>Ulica ....................................................................................................................... Nr domu ........................................ Nr mieszkania .....................................</p>
+        <p>Miejscowość .................................................. Kod pocztowy ........................................... Poczta ..............................................</p>
+        <p>Urząd skarbowy (właściwy do przekazania rocznej informacji o dochodach i pobranych zaliczkach na podatek dochodowy) Nazwa i adres ......................................................................................................................................................................................................................................</p>
+        <p>Oświadczenie dla cel&oacute;w powszechnego ubezpieczenia zdrowotnego</p>
+        <p>4.1. Właściwy oddział Narodowego Funduszu Zdrowia ..............................................................................................................................</p>
+        <p>4.2 Jestem:emerytem tak nie</p>
+        <p>rencistą tak nie</p>
+        <p>4.3 Posiadam orzeczenie o stopniu niepełnosprawności tak nie</p>
+        <p>Jeśli wpisano TAK, określić orzeczony stopień niepełnosprawności ..................................................................................................</p>
+        <p>5. Oświadczenie dla cel&oacute;w powszechnego ubezpieczenia społecznego</p>
+        <p>5.1 Oświadczam, iż JESTEM/ NIE JESTEM* objęty/a ubezpieczeniem emerytalnym i rentowym z tytułu (niewłaściwe przekreślić)<br>&nbsp;(właściwe zakreślić znakiem X):</p>
+        <p> Stosunku pracy (podać nazwę zakładu pracy) &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;...&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;</p>
+        <p> Członkostwa w sp&oacute;łdzielni produkcyjnej lub k&oacute;łek rolniczych</p>
+        <p> Stosunku służby w WP, Policji, UOP, SG, PSW, SW, SC</p>
+        <p> Wykonywania umowy zlecenia na rzecz innego zleceniodawcy</p>
+        <p> Prowadzenia pozarolniczej działalności gospodarczej na własne nazwisko</p>
+        <p> Wykonywania pracy nakładczej</p>
+        <p> Z innego tytułu (określić tytuł ........................................................................................................................................................................... )</p>
+        <p>R&oacute;wnocześnie oświadczam, iż podstawa wymiaru składek na ubezpieczenie społeczne emerytalne i rentowe&nbsp;<br>&nbsp;z określonego przeze mnie tytułu w przeliczeniu na okres miesiąca jest &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;. (wpisać odpowiednio: niższa, r&oacute;wna, wyższa) od kwoty wynagrodzenia minimalnego.</p>
+        <p>5.2 Oświadczam, iż&nbsp;<strong>JESTEM / NIE JESTEM*</strong> studentem/uczniem szkoły ponadpodstawowej i nie ukończyłem 26 lat.&nbsp;<br>&nbsp;(nazwa szkoły, nr leg.) &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;</p>
+        <p>6. Oświadczenie dla cel&oacute;w dobrowolnego ubezpieczenia społecznego/chorobowego</p>
+        <p>WNOSZĘ/ NIE WNOSZĘ* (niewłaściwe przekreślić) o objęcie mnie dobrowolnym ubezpieczeniem emerytalnym i rentowym/chorobowym.</p>
+        <p>7. Oświadczam, iż wyrażam zgodę na przekazywanie mojego wynagrodzenia za pracę otrzymanego z tytułu wykonania umowy zlecenia na moje konto osobiste nr&nbsp;<br>&nbsp;<br>&nbsp;..................................................................................................................................................................................................................................................................</p>
+        <p>8. Wyrażam zgodę na przekazanie PIT-11 w wersji elektronicznej na adres e-mail (wpisać adres e-mail drukowanymi)</p>
+        <p><br></p>
+        <p>&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;</p>
+        <p><br></p>
+        <p>Oświadczam, iż wszystkie informacje są zgodne ze stanem faktycznym i prawnym, a odpowiedzialność karna za podanie informacji niezgodnych z prawdą lub ich zatajenie jest mi znana. Zobowiązuję się do niezwłocznego poinformowania Zleceniodawcy o wszelkich zmianach dotyczących treści niniejszego oświadczenia oraz przejmuję odpowiedzialność z tytułu niedotrzymania powyższego zobowiązania. Upoważniam Zleceniodawcę do dokonania w moim imieniu zgłoszenia do ubezpieczenia zdrowotnego i/lub społecznego, o ile wykonywanie przeze mnie umowy zlecenia podlegać będzie tym ubezpieczeniom zgodnie z obowiązującymi przepisami.</p>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+        <p>............................................................................</p>
+        <p>(data i podpis Zleceniobiorcy)</p>
+        <p><br></p>
+    </body>
+</html>
+
+
+
+
+
+
+<!-- Name: {{ json_data.name }} <br> -->
